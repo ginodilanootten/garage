@@ -21,31 +21,36 @@ if( isset($_SESSION['user_id']) ){
 				header("Location: index.php");
 }
 
+$rank = $user['rank'];
 ?>
-
-			<button class="dropbtn">Klant</button>
+<?php if($rank > 0){?>		
+		<button class="dropbtn">Klant</button>
 			<div class="dropdown-content">
-				<a href="klantmaken.php">Aanmaken</a>
-				<a href="klantverwijderen.php">Verwijderen</a>
-				<a href="klantupdaten.php">Update</a>
-				<a href="klantzoeken.php">Zoeken</a>
-				<a href="klantoverzicht.php">Overzicht</a>
-				<a href="autoklant.php">Auto & Klant</a>
+<?php if($rank == 2){?>	<a href="klantmaken.php">Aanmaken</a>  <?php } ?>
+<?php if($rank == 2){?>	<a href="klantverwijderen.php">Verwijderen</a> <?php } ?>
+<?php if($rank == 2){?>	<a href="klantupdaten.php">Update</a>  <?php } ?>
+<?php if($rank == 1){?>	<a href="klantzoeken.php">Zoeken</a>  <?php } ?>
+<?php if($rank > 0){?>	<a href="klantoverzicht.php">Overzicht</a>  <?php } ?>
+<?php if($rank > 0){?>	<a href="autoklant.php">Auto & Klant</a> <?php } ?>
 			</div>
 		</div>
 		<div class="dropdown">
-			<button class="dropbtn">Auto</button>
+		<button class="dropbtn">Auto</button>
 			<div class="dropdown-content">
-				<a href="automaken.php">Aanmaken</a>
-				<a href="autoverwijderen.php">Verwijderen</a>
-				<a href="autoupdaten.php">Update</a>
-				<a href="autozoeken.php">Zoeken</a>
-				<a href="autooverzicht.php">Overzicht</a>
-				<a href="autoklant.php">Auto & Klant</a>
+<?php if($rank == 2){?>	<a href="automaken.php">Aanmaken</a>  <?php } ?>
+<?php if($rank == 2){?>	<a href="autoverwijderen.php">Verwijderen</a> <?php } ?>
+<?php if($rank == 2){?>	<a href="autoupdaten.php">Update</a>  <?php } ?>
+<?php if($rank == 1){?>	<a href="autozoeken.php">Zoeken</a>  <?php } ?>
+<?php if($rank > 0){?>	<a href="autooverzicht.php">Overzicht</a>  <?php } ?>
+<?php if($rank > 0){?>	<a href="autoklant.php">Auto & Klant</a> <?php } ?>
 			</div>
 		</div>
+
 		<div class="dropdown">
 			<button class="dropbtn">Administratie</button>
 			<div class="dropdown-content">
 				<a href="uitloggen.php">Uitloggen</a>
 			</div>
+<?php } else { ?>
+Je hebt geen toegang tot het medewerker paneel!
+<?php } ?>
